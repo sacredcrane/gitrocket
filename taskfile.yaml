@@ -1,0 +1,44 @@
+version: '3'
+
+dotenv: [.env]
+
+tasks:
+  mcreate-*:
+    desc:
+      Creates and migration in 
+      directory DIR from .env file and 
+      specified by NAME from wildcard.
+    vars:
+      NAME: '{{index .MATCH 0}}'
+    cmds:
+      - migrate create -ext sql -dir $DIR -seq "{{.NAME}}"
+
+  mapply:
+    desc:
+      Apply migrations to
+      database specified in .env file in root folder
+      as $DB_PATH
+      As additional has a envvar DIR
+    cmds:
+      - migrate -path $DIR -database $DB_PATH up
+      - clear
+
+  mreset:
+    desc:
+      Reset migrations to
+      database specified in .env file in root folder
+      as $DB_PATH
+      As additional has a envvar DIR
+
+    cmds:
+      - migrate -path $DIR -database $DB_PATH down
+      - clear
+
+  build:
+
+  bfront:
+
+  bback:
+
+  bdocker:
+
