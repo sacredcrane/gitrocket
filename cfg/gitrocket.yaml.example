@@ -1,0 +1,16 @@
+env:
+  environment: 'local'
+  workspace_dir: '/tmp/gitrocket'
+
+server:
+  host: 127.0.0.1
+  port: 8080
+  timeout:
+    server: 30
+    read: 15
+    write: 10
+    idle: 5
+
+db:
+  driver: 'postgres'
+  path: 'postgres://user:password@localhost:5432/database?search_path=schema'

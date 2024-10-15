@@ -1,0 +1,26 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "pg",
+            "database": "sacred_crane",
+            "username": "sacred_crane"
+        }
+    ],
+    "cSpell.words": [
+        "bback",
+        "bdocker",
+        "bfront",
+        "cmds",
+        "dhost",
+        "dotenv",
+        "mapply",
+        "mcreate",
+        "mreset",
+        "rpath"
+    ]
+}
