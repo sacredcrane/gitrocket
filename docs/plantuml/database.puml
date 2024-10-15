@@ -1,0 +1,99 @@
+@startuml ERD
+
+entity User {
+    * **user_id** (UUID) <PK>
+    --
+    * login (VARCHAR)
+    * password (VARCHAR)
+    * last_access_at (TIMESTAMP)
+    access_token (VARCHAR)
+    last_used_at (VARCHAR)
+    created_at (TIMESTAMP)
+    updated_at (TIMESTAMP)
+}
+
+entity Project {
+    * **project_id** (UUID) <PK>
+    --
+    * owner_id (UUID) <FK>
+    * repo_id (UUID) <FK>
+    * settings_id (UUID) <FK>
+    * runner_id (UUID) <FK>
+    * rule_id (UUID) <FK>
+    * status (Status)
+    created_at (TIMESTAMP)
+    updated_at (TIMESTAMP)
+    description (VARCHAR)
+}
+
+enum Status {
+    READY
+    WORKING
+    PENDING
+    ERRORED
+}
+
+entity GitRepository {
+    * **repository_id** (UUID) <PK>
+    --
+    * url (VARCHAR)
+    * last_access_at (TIMESTAMP)
+    * access_token (VARCHAR)
+    * tracked_branch (VARCHAR)
+    created_at (TIMESTAMP)
+    updated_at (TIMESTAMP)
+}
+
+entity ProjectSettings {
+    * **settings_id** (UUID) <PK>
+    --
+    * settings_relative_path (VARCHAR)
+    * settings_file (BLOB)
+    dockerfile_relative_path (VARCHAR)
+    created_at (TIMESTAMP)
+    updated_at (TIMESTAMP)
+}
+
+entity DockerHost {
+    * **host_id** (UUID) <PK>
+    --
+    * docker_user (VARCHAR)
+    * host_ip (VARCHAR)
+    created_at (TIMESTAMP)
+    updated_at (TIMESTAMP)
+    last_access_at (TIMESTAMP)
+}
+
+entity IntegrationRule {
+    * **rule_id** (UUID) <PK>
+    --
+    * rule_type (RuleType)
+    event_type (EventType)
+    created_at (TIMESTAMP)
+    updated_at (TIMESTAMP)
+    time_rule (TIMESTAMP)
+}
+
+enum RuleType {
+    BY_TIME
+    BY_EVENT
+}
+
+enum EventType {
+    ON_MERGE
+    ON_TAG
+    ON_COMMIT
+}
+
+User ||--o{ Project
+Project ||--|| ProjectSettings
+GitRepository ||--|| Project
+DockerHost ||--o{ Project
+Status ||--o{ Project
+IntegrationRule ||-o{ Project
+RuleType ||--o{ IntegrationRule
+EventType |o--o{ IntegrationRule
+
+
+
+@enduml
