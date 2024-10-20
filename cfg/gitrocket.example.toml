@@ -1,5 +1,5 @@
 [env]
-environment = 'local'
+type = 'local'
 workspace = '/tmp/gitrocket'
 
 [server]
