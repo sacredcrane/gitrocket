@@ -1,0 +1,22 @@
+[env]
+environment = 'local'
+workspace = '/tmp/gitrocket'
+
+[server]
+host = '127.0.0.1'
+port = 8080
+
+[server.timeout]
+server = 30
+read = 15
+write = 10
+idle = 5
+
+[database]
+driver = 'postgres'
+user = 'postgres'
+password = 'postgres'
+hostname = 'localhost'
+port = 5432
+db_name = 'postgres'
+schema = 'public'

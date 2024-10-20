@@ -17,10 +17,12 @@
         "bfront",
         "cmds",
         "dhost",
+        "Dockerfiles",
         "dotenv",
+        "Gitrocket",
         "mapply",
         "mcreate",
         "mreset",
         "rpath"
-    ]
+    ],
 }

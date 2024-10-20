@@ -25,4 +25,4 @@ go.work.sum
 .env
 
 # configuration file
-cfg/*.yaml
+gitrocket.toml
