@@ -26,3 +26,5 @@ go.work.sum
 
 # configuration file
 gitrocket.toml
+
+/build
